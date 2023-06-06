@@ -6,6 +6,6 @@ import (
 )
 
 func InitIndex() {
-	http.HandleFunc("/", handler.Index)
-	http.HandleFunc("/index.html", handler.IndexHtml)
+	http.HandleFunc("/", handler.IndexHtml)
+	http.Handle("/resource/", http.StripPrefix("/resource/", http.FileServer(http.Dir("public/resource/"))))
 }
